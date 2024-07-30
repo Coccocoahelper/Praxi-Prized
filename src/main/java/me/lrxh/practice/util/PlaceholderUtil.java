@@ -146,9 +146,9 @@ public final class PlaceholderUtil {
             hitCombo = "&a" + playerCombo + " Combo";
         } else if (opponentCombo > 1) {
             hitCombo = "&c" + opponentCombo + " Combo";
-        } else if (opponentCombo == 0 && playerCombo == 0 && isMMCCombo) {
+        } else if (opponentCombo < 2 && playerCombo < 2 && isMMCCombo) {
             hitCombo = "&f1st to 100 wins!";
-        } else if (opponentCombo == 0 && playerCombo == 0 && !isMMCCombo) {
+        } else if (opponentCombo < 2 && playerCombo < 2 && !isMMCCombo) {
             hitCombo = "&fNo Combo";
         }
 
