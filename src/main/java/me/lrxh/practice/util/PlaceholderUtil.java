@@ -140,15 +140,18 @@ public final class PlaceholderUtil {
         Match match = profile.getMatch();
         Integer playerCombo = match.getGamePlayer(player).getCombo();
         Integer opponentCombo = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getCombo();
-
+        String hitCombo;
+        
         if (playerCombo > 1) {
-            return CC.translate("&a" + playerCombo + " Combo");
+            hitCombo = "&a" + playerCombo + " Combo";
         } else if (opponentCombo > 1) {
-            return CC.translate("&c" + opponentCombo + " Combo");
+            hitCombo = "&c" + opponentCombo + " Combo";
         } else if (opponentCombo == 0 && playerCombo == 0 && isMMCCombo) {
-            return CC.translate("&f1st to 100 wins!");
+            hitCombo = "&f1st to 100 wins!";
         } else if (opponentCombo == 0 && playerCombo == 0 && !isMMCCombo) {
-            return CC.translate("&fNo Combo");
+            hitCombo = "&fNo Combo";
         }
+
+        return CC.translate(hitCombo);
     }
 }
