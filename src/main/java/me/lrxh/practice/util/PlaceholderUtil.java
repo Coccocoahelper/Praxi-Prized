@@ -145,12 +145,10 @@ public final class PlaceholderUtil {
             return CC.translate("&a" + playerCombo + " Combo");
         } else if (opponentCombo > 1) {
             return CC.translate("&c" + opponentCombo + " Combo");
-        } else if (opponentCombo == 0 && playerCombo == 0) {
-            if (isMMCCombo) {
-                return CC.translate("&f1st to 100 wins!");
-            } else {
-                return CC.translate("&fNo Combo");
-            }
+        } else if (opponentCombo == 0 && playerCombo == 0 && isMMCCombo) {
+            return CC.translate("&f1st to 100 wins!");
+        } else if (opponentCombo == 0 && playerCombo == 0 && !isMMCCombo) {
+            return CC.translate("&fNo Combo");
         }
     }
 }
