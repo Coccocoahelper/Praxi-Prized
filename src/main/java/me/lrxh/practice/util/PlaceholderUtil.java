@@ -120,8 +120,8 @@ public final class PlaceholderUtil {
         Profile profile = Profile.getByUuid(player.getUniqueId());
         Match match = profile.getMatch();
         Int playerHits = match.getGamePlayer(player).getHits();
-        Int opponentHits = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits()
-        String noAdvantage = isMMCDifference ? "&a(+0)" : "&e(0)"
+        Int opponentHits = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits();
+        String noAdvantage = isMMCDifference ? "&a(+0)" : "&e(0)";
 
         if (playerHits - opponentHits > 0) {
             return CC.translate("&a(+" + (playerHits - opponentHits) + ")");
@@ -136,8 +136,8 @@ public final class PlaceholderUtil {
         Profile profile = Profile.getByUuid(player.getUniqueId());
         Match match = profile.getMatch();
         Int playerCombo = match.getGamePlayer(player).getCombo();
-        Int opponentCombo = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getCombo()
-        String noCombo = isMMC ? "&f1st to 100 wins!" : "&fNo Combo"
+        Int opponentCombo = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getCombo();
+        String noCombo = isMMC ? "&f1st to 100 wins!" : "&fNo Combo";
 
         if (playerCombo > 1) {
             return CC.translate("&a" + playerCombo + " Combo");
