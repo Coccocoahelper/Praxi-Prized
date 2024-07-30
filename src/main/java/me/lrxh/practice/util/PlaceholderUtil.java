@@ -140,7 +140,7 @@ public final class PlaceholderUtil {
         Match match = profile.getMatch();
         Integer playerCombo = match.getGamePlayer(player).getCombo();
         Integer opponentCombo = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getCombo();
-        String hitCombo;
+        String hitCombo = "";
         
         if (playerCombo > 1) {
             hitCombo = "&a" + playerCombo + " Combo";
