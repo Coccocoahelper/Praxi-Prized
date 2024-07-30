@@ -126,7 +126,7 @@ public final class PlaceholderUtil {
         if (playerHits - opponentHits > 0) {
             return CC.translate("&a(+" + (playerHits - opponentHits) + ")");
         } else if (player - opponent < 0) {
-            return CC.translate("&c(" + (playerHits - opponentHits + ")");
+            return CC.translate("&c(" + (playerHits - opponentHits + ")"));
         } else {
             return CC.translate(noAdvantage);
         }
