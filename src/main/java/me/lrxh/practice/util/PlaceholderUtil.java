@@ -124,7 +124,7 @@ public final class PlaceholderUtil {
 
         if (playerHits - opponentHits > 0) {
             return CC.translate("&a(+" + (playerHits - opponentHits) + ")");
-        } else if (player - opponent < 0) {
+        } else if (playerHits - opponentHits < 0) {
             return CC.translate("&c(" + (playerHits - opponentHits) + ")");
         } else {
             if (isMMCDifference) {
@@ -145,7 +145,7 @@ public final class PlaceholderUtil {
             return CC.translate("&a" + playerCombo + " Combo");
         } else if (opponentCombo > 1) {
             return CC.translate("&c" + opponentCombo + " Combo");
-        } else if (opponentCombo = 0 && playerCombo = 0) {
+        } else if (opponentCombo == 0 && playerCombo == 0) {
             if (isMMCCombo) {
                 return CC.translate("&f1st to 100 wins!");
             } else {
