@@ -120,15 +120,18 @@ public final class PlaceholderUtil {
         Profile profile = Profile.getByUuid(player.getUniqueId());
         Match match = profile.getMatch();
         Integer playerHits = match.getGamePlayer(player).getHits();
-        Int opponentHits = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits();
-        String noAdvantage = if (isMMCDifference) "&a(+0)" else "&e(0)";
+        Integer opponentHits = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits();
 
         if (playerHits - opponentHits > 0) {
             return CC.translate("&a(+" + (playerHits - opponentHits) + ")");
         } else if (player - opponent < 0) {
-            return CC.translate("&c(" + (playerHits - opponentHits + ")"));
+            return CC.translate("&c(" + (playerHits - opponentHits) + ")");
         } else {
-            return CC.translate(noAdvantage);
+            if (isMMCDifference) {
+                return CC.translate("&a(+0)");
+            } else {
+                return CC.translate("&e(0)");
+            }        
         }
     }
 
@@ -137,14 +140,17 @@ public final class PlaceholderUtil {
         Match match = profile.getMatch();
         Integer playerCombo = match.getGamePlayer(player).getCombo();
         Integer opponentCombo = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getCombo();
-        String noCombo = if (isMMCCombo) "&f1st to 100 wins!" else "&fNo Combo";
 
         if (playerCombo > 1) {
             return CC.translate("&a" + playerCombo + " Combo");
         } else if (opponentCombo > 1) {
             return CC.translate("&c" + opponentCombo + " Combo");
         } else if (opponentCombo = 0 && playerCombo = 0) {
-            return CC.translate(noCombo);
+            if (isMMCCombo) {
+                return CC.translate("&f1st to 100 wins!");
+            } else {
+                return CC.translate("&fNo Combo");
+            }
         }
     }
 }
