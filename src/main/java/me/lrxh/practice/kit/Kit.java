@@ -29,7 +29,6 @@ public class Kit {
     private final KitEditRules editRules = new KitEditRules();
     private final KitGameRules gameRules = new KitGameRules();
     private boolean enabled;
-    private String knockbackProfile;
     private ItemStack displayIcon;
     private List<String> description;
 
@@ -47,10 +46,7 @@ public class Kit {
 
             Kit kit = new Kit(key);
             kit.setEnabled(config.getBoolean(path + ".enabled"));
-
-            if (config.contains(path + ".knockback-profile")) {
-                kit.setKnockbackProfile(config.getString(path + ".knockback-profile"));
-            }
+            kit.setKnockbackProfile(config.getString(path + ".knockback-profile"));
 
             kit.setDisplayIcon(new ItemBuilder(Material.valueOf(config.getString(path + ".icon.material")))
                     .durability(config.getInt(path + ".icon.durability"))
@@ -73,6 +69,7 @@ public class Kit {
             kit.getGameRules().setHealthRegeneration(config.getBoolean(path + ".game-rules.health-regeneration"));
             kit.getGameRules().setShowHealth(config.getBoolean(path + ".game-rules.show-health"));
             kit.getGameRules().setHitDelay(config.getInt(path + ".game-rules.hit-delay"));
+            kit.getGameRules().setKnockbackProfile(config.getString(path + ".game-rules.knockback-profile"))
             kit.getEditRules().setAllowPotionFill(config.getBoolean(".edit-rules.allow-potion-fill"));
 
             if (config.getConfigurationSection(path + ".edit-rules.items") != null) {
@@ -130,10 +127,7 @@ public class Kit {
         configFile.getConfiguration().set(path + ".game-rules.show-health", gameRules.isShowHealth());
         configFile.getConfiguration().set(path + ".game-rules.hit-delay", gameRules.getHitDelay());
         configFile.getConfiguration().set(path + ".game-rules.boxing", gameRules.isBoxing());
-
-        if (knockbackProfile != null) {
-            configFile.getConfiguration().set(path + ".knockback-profile", knockbackProfile);
-        }
+        configFile.getConfiguration().set(path + ".game-rules.knockback-profile", knockbackProfile);
 
         try {
             configFile.getConfiguration().save(configFile.getFile());
