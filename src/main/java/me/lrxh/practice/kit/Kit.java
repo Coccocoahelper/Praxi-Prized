@@ -69,7 +69,7 @@ public class Kit {
             kit.getGameRules().setHealthRegeneration(config.getBoolean(path + ".game-rules.health-regeneration"));
             kit.getGameRules().setShowHealth(config.getBoolean(path + ".game-rules.show-health"));
             kit.getGameRules().setHitDelay(config.getInt(path + ".game-rules.hit-delay"));
-            kit.getGameRules().setKnockbackProfile(config.getString(path + ".game-rules.knockback-profile"))
+            kit.getGameRules().setKnockbackProfile(config.getString(path + ".game-rules.knockback-profile"));
             kit.getEditRules().setAllowPotionFill(config.getBoolean(".edit-rules.allow-potion-fill"));
 
             if (config.getConfigurationSection(path + ".edit-rules.items") != null) {
