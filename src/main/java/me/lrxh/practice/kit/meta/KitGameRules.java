@@ -15,5 +15,5 @@ public class KitGameRules {
     private boolean boxing;
     private boolean bedwars;
     private int hitDelay = 20;
-    private String kbProfile;
+    private String kbProfile = "default";
 }
