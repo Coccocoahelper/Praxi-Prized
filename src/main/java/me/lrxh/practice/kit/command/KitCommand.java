@@ -27,8 +27,8 @@ public class KitCommand extends BaseCommand {
         player.sendMessage(CC.translate("&7* &c/kit create &7<value> - &fCreate kit"));
         player.sendMessage(CC.translate("&7* &c/kit getinv &7<kit> - &fGet kit loadout"));
         player.sendMessage(CC.translate("&7* &c/kit list &7- &fList all kits"));
-        player.sendMessage(CC.translate("&7* &c/arena setinv &7<kit> &7- &fSet kit loadout"));
-        player.sendMessage(CC.translate("&7* &c/arena setkb &7<kit> &7<kb> &7- &fSet kit KB Profile"));
+        player.sendMessage(CC.translate("&7* &c/kit setinv &7<kit> &7- &fSet kit loadout"));
+        player.sendMessage(CC.translate("&7* &c/kit setkb &7<kit> &7<kb> &7- &fSet kit KB Profile"));
         player.sendMessage(CC.translate("&7&m-----------------------------------------"));
     }
 
@@ -86,7 +86,7 @@ public class KitCommand extends BaseCommand {
 
         Kit.getKits().add(kit);
 
-        player.sendMessage(CC.GREEN + "You created a new kit.");
+        player.sendMessage(CC.GREEN + "Created a kit.");
     }
 
     @Subcommand("remove")
@@ -94,7 +94,7 @@ public class KitCommand extends BaseCommand {
     @Syntax("<kit>")
     public void remove(Player player, String kitName) {
         if (!Kit.getKits().contains(Kit.getByName(kitName))) {
-            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exists!"));
+            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exist!"));
             return;
         }
         Kit kit = Kit.getByName(kitName);
@@ -110,7 +110,7 @@ public class KitCommand extends BaseCommand {
     @Syntax("<kit>")
     public void getinv(Player player, String kitName) {
         if (!Kit.getKits().contains(Kit.getByName(kitName))) {
-            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exists!"));
+            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exist!"));
             return;
         }
         Kit kit = Kit.getByName(kitName);
@@ -137,12 +137,12 @@ public class KitCommand extends BaseCommand {
     @Syntax("<kit>")
     public void setinv(Player player, String kitName) {
         if (!Kit.getKits().contains(Kit.getByName(kitName))) {
-            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exists!"));
+            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exist!"));
             return;
         }
 
         if (player.getGameMode().equals(GameMode.CREATIVE)) {
-            player.sendMessage(CC.translate("&4ERROR - &cYou cannot set inv in creative mode!"));
+            player.sendMessage(CC.translate("&4ERROR - &cYou cannot set the inventory in creative mode!"));
             return;
         }
         Kit kit = Kit.getByName(kitName);
@@ -152,7 +152,7 @@ public class KitCommand extends BaseCommand {
         kit.getKitLoadout().setContents(player.getInventory().getContents());
         kit.save();
 
-        player.sendMessage(CC.GREEN + "You updated the kit's loadout.");
+        player.sendMessage(CC.GREEN + "Updated the kit's loadout.");
     }
 
     @Subcommand("setkb")
@@ -160,16 +160,16 @@ public class KitCommand extends BaseCommand {
     @Syntax("<kit> <kb>")
     public void setkb(Player player, String kitName, String kbName) {
         if (!Kit.getKits().contains(Kit.getByName(kitName))) {
-            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exists!"));
+            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exist!"));
             return;
         }
         Kit kit = Kit.getByName(kitName);
         if (kit == null) return;
 
-        kit.setKnockbackProfile(kbName);
+        kit.getGameRules().setKnockbackProfile(kbName);
         kit.save();
 
-        player.sendMessage(CC.GREEN + "You updated the kit's kb.");
+        player.sendMessage(CC.GREEN + "Updated the kit's knockback profile.");
     }
 
     @Subcommand("seticon")
@@ -177,7 +177,7 @@ public class KitCommand extends BaseCommand {
     @Syntax("<kit>")
     public void setIcon(Player player, String kitName) {
         if (!Kit.getKits().contains(Kit.getByName(kitName))) {
-            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exists!"));
+            player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exist!"));
             return;
         }
         Kit kit = Kit.getByName(kitName);
@@ -186,7 +186,7 @@ public class KitCommand extends BaseCommand {
         kit.setDisplayIcon(player.getItemInHand());
         kit.save();
 
-        player.sendMessage(CC.GREEN + "You updated the kit's icon.");
+        player.sendMessage(CC.GREEN + "Updated the kit's icon.");
     }
 
     @Subcommand("enable")
