@@ -1,7 +1,7 @@
 # Praxi Reprised
 
 > [!IMPORTANT]
-> To use this your server must be running on a 1.8 server!
+> To use this your server must be running on a WindSpigot 1.8.8 server!
 
 The most configurable, efficient, and extensive practice plugin.
 
