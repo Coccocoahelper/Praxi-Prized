@@ -36,6 +36,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.lang.reflect.Field;
 
 @Getter
 @Setter
@@ -329,10 +330,9 @@ public abstract class Match {
         for (GameParticipant<MatchGamePlayer> gameParticipant : getParticipants()) {
             gameParticipant.reset();
 //            if (Practice.getInstance().getSpigotHandler() == null) return;
-//            if (kit.getKnockbackProfile() == null) return;
-//            for (GamePlayer gamePlayer : gameParticipant.getPlayers()) {
-//                Practice.getInstance().getSpigotHandler().getKnockback().setKnockback(gamePlayer.getPlayer(), kit.getKnockbackProfile());
-//            }
+            if (kit.getKnockbackProfile() != null) {
+                KnockbackUtil.setKnockback(gamePlayer.getPlayer(), kit.getKnockbackProfile());
+            }
         }
     }
 
