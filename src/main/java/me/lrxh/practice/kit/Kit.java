@@ -46,8 +46,6 @@ public class Kit {
 
             Kit kit = new Kit(key);
             kit.setEnabled(config.getBoolean(path + ".enabled"));
-            kit.setKnockbackProfile(config.getString(path + ".knockback-profile"));
-
             kit.setDisplayIcon(new ItemBuilder(Material.valueOf(config.getString(path + ".icon.material")))
                     .durability(config.getInt(path + ".icon.durability"))
                     .build());
