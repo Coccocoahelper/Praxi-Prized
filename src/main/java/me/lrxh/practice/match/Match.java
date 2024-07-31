@@ -184,6 +184,9 @@ public abstract class Match {
         // Set the player's max damage ticks
         player.setMaximumNoDamageTicks(getKit().getGameRules().getHitDelay());
 
+        // Set the player's knockback
+        KnockbackUtil.setKnockback(gamePlayer.getPlayer(), kit.getGameRules().getKnockbackProfile());
+
         // If the player has no kits, apply the default kit, otherwise
         // give the player a list of kit books to choose from
         if (!getKit().getGameRules().isSumo()) {
@@ -328,10 +331,6 @@ public abstract class Match {
         // Reset each game participant
         for (GameParticipant<MatchGamePlayer> gameParticipant : getParticipants()) {
             gameParticipant.reset();
-//            if (Practice.getInstance().getSpigotHandler() == null) return;
-            if (kit.getKnockbackProfile() != null) {
-                KnockbackUtil.setKnockback(gamePlayer.getPlayer(), kit.getKnockbackProfile());
-            }
         }
     }
 
