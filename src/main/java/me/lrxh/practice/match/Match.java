@@ -172,6 +172,8 @@ public abstract class Match {
         }
         Profile profile = Profile.getByUuid(player.getUniqueId());
 
+        KnockbackUtil knockbackUtil = new KnockbackUtil();
+
         // Reset the player's inventory
         PlayerUtil.reset(player);
 
@@ -185,7 +187,7 @@ public abstract class Match {
         player.setMaximumNoDamageTicks(getKit().getGameRules().getHitDelay());
 
         // Set the player's knockback
-        KnockbackUtil.setKnockback(player, kit.getGameRules().getKnockbackProfile());
+        knockbackUtil.setKnockback(player, kit.getGameRules().getKnockbackProfile());
 
         // If the player has no kits, apply the default kit, otherwise
         // give the player a list of kit books to choose from
